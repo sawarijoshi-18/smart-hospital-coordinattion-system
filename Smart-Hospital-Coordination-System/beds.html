@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bed Availability</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+    <div class="sidebar">
+
+    <h4>Smart Hospital</h4>
+
+    <a href="dashboard.html" class="sidebar-link">🏠 Dashboard</a>
+
+    <a href="patients.html" class="sidebar-link">👨‍⚕️ Patients</a>
+
+    <a href="emergency.html" class="sidebar-link">🚨 Emergency</a>
+
+    <a href="blood.html" class="sidebar-link">🩸 Blood Availability</a>
+
+    <a href="beds.html" class="sidebar-link">🛏️ Bed Availability</a>
+
+    <a href="handover.html" class="sidebar-link">📋 Patient Handover</a>
+
+    <a href="tests.html" class="sidebar-link">🧪 Pending Tests</a>
+
+    <a href="department.html" class="sidebar-link">🏥 Department Coordination</a>
+
+</div>
+
+<div class="dashboard-container">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <h3 class="sidebar-title">
+            <i class="bi bi-hospital"></i>
+            Smart Hospital
+        </h3>
+
+
+        <a href="dashboard.html" class="sidebar-link">
+
+            <i class="bi bi-speedometer2"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="patients.html" class="sidebar-link">
+
+            <i class="bi bi-people-fill"></i>
+
+            Patients
+
+        </a>
+
+
+        <a href="emergency.html" class="sidebar-link">
+
+            <i class="bi bi-exclamation-triangle-fill"></i>
+
+            Emergency Priority
+
+        </a>
+
+
+        <a href="blood.html" class="sidebar-link">
+
+            <i class="bi bi-droplet-fill"></i>
+
+            Blood Availability
+
+        </a>
+
+
+        <a href="beds.html" class="sidebar-link active">
+
+            <i class="bi bi-hospital-fill"></i>
+
+            Bed Availability
+
+        </a>
+
+
+        <a href="#" class="sidebar-link">
+
+            <i class="bi bi-arrow-left-right"></i>
+
+            Patient Handover
+
+        </a>
+
+
+        <a href="#" class="sidebar-link">
+
+            <i class="bi bi-clipboard2-pulse-fill"></i>
+
+            Pending Tests
+
+        </a>
+
+
+        <a href="#" class="sidebar-link">
+
+            <i class="bi bi-diagram-3-fill"></i>
+
+            Department Coordination
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>Bed Availability</h2>
+
+                <p>
+                    View current bed occupancy and availability
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <div class="row g-4 mb-4">
+
+
+            <!-- TOTAL BEDS -->
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-hospital"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h6>Total Beds</h6>
+
+                        <h2 id="totalBeds">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AVAILABLE -->
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h6>Available Beds</h6>
+
+                        <h2 id="availableBeds">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OCCUPIED -->
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-person-fill"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h6>Occupied Beds</h6>
+
+                        <h2 id="occupiedBeds">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= BED TABLE ================= -->
+
+        <div class="content-card">
+
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4>
+
+                    <i class="bi bi-hospital-fill"></i>
+
+                    Bed Status
+
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="bedSearch"
+                    class="form-control"
+                    placeholder="Search bed..."
+                    style="max-width: 250px;"
+                >
+
+            </div>
+
+
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Bed ID</th>
+
+                            <th>Department</th>
+
+                            <th>Status</th>
+
+                            <th>Patient ID</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="bedTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- DATA -->
+
+<script src="js/data.js"></script>
+
+
+
+<script>
+
+(function () {
+
+
+    // Get bed data from LocalStorage
+
+    let beds = JSON.parse(localStorage.getItem("beds")) || [];
+
+
+    // Get HTML elements
+
+    const tableBody =
+        document.getElementById("bedTableBody");
+
+    const totalBeds =
+        document.getElementById("totalBeds");
+
+    const availableBeds =
+        document.getElementById("availableBeds");
+
+    const occupiedBeds =
+        document.getElementById("occupiedBeds");
+
+
+
+    // ================= DISPLAY BEDS =================
+
+    function displayBeds(data) {
+
+
+        tableBody.innerHTML = "";
+
+
+        let available = 0;
+
+        let occupied = 0;
+
+
+
+        data.forEach(function (bed) {
+
+
+            if (bed.status === "Available") {
+
+                available++;
+
+            } else {
+
+                occupied++;
+
+            }
+
+
+
+            let badgeClass = "";
+
+            let patientID = bed.patientId || "-";
+
+
+
+            if (bed.status === "Available") {
+
+                badgeClass = "bg-success";
+
+            } else {
+
+                badgeClass = "bg-danger";
+
+            }
+
+
+
+            tableBody.innerHTML += `
+
+                <tr>
+
+                    <td>
+
+                        <strong>${bed.bedId}</strong>
+
+                    </td>
+
+
+                    <td>
+
+                        ${bed.department}
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge ${badgeClass}">
+
+                            ${bed.status}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        ${patientID}
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+
+        // Update summary
+
+        totalBeds.textContent = data.length;
+
+        availableBeds.textContent = available;
+
+        occupiedBeds.textContent = occupied;
+
+    }
+
+
+
+    // Display all beds initially
+
+    displayBeds(beds);
+
+
+
+    // ================= SEARCH =================
+
+    document
+        .getElementById("bedSearch")
+        .addEventListener("input", function () {
+
+
+            let searchText =
+                this.value.toLowerCase();
+
+
+            let filteredBeds =
+                beds.filter(function (bed) {
+
+
+                    return (
+
+                        bed.bedId
+                            .toLowerCase()
+                            .includes(searchText)
+
+                        ||
+
+                        bed.department
+                            .toLowerCase()
+                            .includes(searchText)
+
+                        ||
+
+                        bed.status
+                            .toLowerCase()
+                            .includes(searchText)
+
+                        ||
+
+                        (bed.patientId || "")
+                            .toLowerCase()
+                            .includes(searchText)
+
+                    );
+
+                });
+
+
+
+            displayBeds(filteredBeds);
+
+        });
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>

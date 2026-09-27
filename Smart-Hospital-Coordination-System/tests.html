@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pending Tests</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+    <div class="sidebar">
+
+    <h4>Smart Hospital</h4>
+
+    <a href="dashboard.html" class="sidebar-link">🏠 Dashboard</a>
+
+    <a href="patients.html" class="sidebar-link">👨‍⚕️ Patients</a>
+
+    <a href="emergency.html" class="sidebar-link">🚨 Emergency</a>
+
+    <a href="blood.html" class="sidebar-link">🩸 Blood Availability</a>
+
+    <a href="beds.html" class="sidebar-link">🛏️ Bed Availability</a>
+
+    <a href="handover.html" class="sidebar-link">📋 Patient Handover</a>
+
+    <a href="tests.html" class="sidebar-link">🧪 Pending Tests</a>
+
+    <a href="department.html" class="sidebar-link">🏥 Department Coordination</a>
+
+</div>
+
+<div class="dashboard-container">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h3 class="sidebar-title">
+            <i class="bi bi-hospital"></i>
+            Smart Hospital
+        </h3>
+
+
+        <a href="dashboard.html" class="sidebar-link">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+
+        <a href="patients.html" class="sidebar-link">
+            <i class="bi bi-people-fill"></i>
+            Patients
+        </a>
+
+
+        <a href="emergency.html" class="sidebar-link">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Emergency Priority
+        </a>
+
+
+        <a href="blood.html" class="sidebar-link">
+            <i class="bi bi-droplet-fill"></i>
+            Blood Availability
+        </a>
+
+
+        <a href="beds.html" class="sidebar-link">
+            <i class="bi bi-hospital-fill"></i>
+            Bed Availability
+        </a>
+
+
+        <a href="handover.html" class="sidebar-link">
+            <i class="bi bi-arrow-left-right"></i>
+            Patient Handover
+        </a>
+
+
+        <a href="tests.html" class="sidebar-link active">
+            <i class="bi bi-clipboard2-pulse-fill"></i>
+            Pending Tests
+        </a>
+
+
+        <a href="department.html" class="sidebar-link">
+            <i class="bi bi-diagram-3-fill"></i>
+            Department Coordination
+        </a>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>Pending Tests</h2>
+
+                <p>
+                    Track patient investigations and their current status
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="row g-4 mb-4">
+
+
+            <div class="col-md-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-clipboard2-pulse"></i>
+                    </div>
+
+                    <div>
+
+                        <h6>Total Tests</h6>
+
+                        <h2 id="totalTests">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+
+                    <div>
+
+                        <h6>Pending</h6>
+
+                        <h2 id="pendingTests">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+
+                    <div>
+
+                        <h6>In Progress</h6>
+
+                        <h2 id="inProgressTests">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <h6>Completed</h6>
+
+                        <h2 id="completedTests">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TEST TABLE -->
+
+        <div class="content-card">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4>
+                    <i class="bi bi-clipboard2-pulse-fill"></i>
+                    Investigation Records
+                </h4>
+
+
+                <input
+                    type="text"
+                    id="testSearch"
+                    class="form-control"
+                    placeholder="Search Patient ID or Test..."
+                    style="max-width:280px;"
+                >
+
+            </div>
+
+
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Test ID</th>
+
+                            <th>Patient ID</th>
+
+                            <th>Test</th>
+
+                            <th>Department</th>
+
+                            <th>Doctor</th>
+
+                            <th>Date</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="testTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<script src="js/data.js"></script>
+
+
+<script>
+
+(function () {
+
+    let tests =
+        JSON.parse(localStorage.getItem("tests")) || [];
+
+
+    const tableBody =
+        document.getElementById("testTableBody");
+
+
+    function displayTests(data) {
+
+        tableBody.innerHTML = "";
+
+
+        let pending = 0;
+
+        let inProgress = 0;
+
+        let completed = 0;
+
+
+        data.forEach(function (test) {
+
+
+            if (test.status === "Pending") {
+                pending++;
+            }
+
+
+            if (test.status === "In Progress") {
+                inProgress++;
+            }
+
+
+            if (test.status === "Completed") {
+                completed++;
+            }
+
+
+            let badgeClass;
+
+
+            if (test.status === "Pending") {
+
+                badgeClass = "bg-warning text-dark";
+
+            } else if (test.status === "In Progress") {
+
+                badgeClass = "bg-primary";
+
+            } else {
+
+                badgeClass = "bg-success";
+
+            }
+
+
+            tableBody.innerHTML += `
+
+                <tr>
+
+                    <td>
+                        <strong>${test.testId}</strong>
+                    </td>
+
+                    <td>
+                        ${test.patientId}
+                    </td>
+
+                    <td>
+                        ${test.testName}
+                    </td>
+
+                    <td>
+                        ${test.department}
+                    </td>
+
+                    <td>
+                        ${test.doctor}
+                    </td>
+
+                    <td>
+                        ${test.date}
+                    </td>
+
+                    <td>
+
+                        <span class="badge ${badgeClass}">
+                            ${test.status}
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+        document.getElementById("totalTests").textContent =
+            data.length;
+
+        document.getElementById("pendingTests").textContent =
+            pending;
+
+        document.getElementById("inProgressTests").textContent =
+            inProgress;
+
+        document.getElementById("completedTests").textContent =
+            completed;
+
+    }
+
+
+
+    displayTests(tests);
+
+
+
+    document
+        .getElementById("testSearch")
+        .addEventListener("input", function () {
+
+            let searchText =
+                this.value.toLowerCase();
+
+
+            let filtered =
+                tests.filter(function (test) {
+
+                    return (
+
+                        test.patientId
+                            .toLowerCase()
+                            .includes(searchText)
+
+                        ||
+
+                        test.testName
+                            .toLowerCase()
+                            .includes(searchText)
+
+                    );
+
+                });
+
+
+            displayTests(filtered);
+
+        });
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
